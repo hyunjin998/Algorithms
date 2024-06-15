@@ -1,6 +1,6 @@
 class Solution {
     
-    static Point startPoint;
+    static Point currPos;
     static int originX;
     static int originY;
     static int cnt;
@@ -21,8 +21,8 @@ class Solution {
         FindStartPoint(park, routes, 0, 0);
         MovingRoutesDirection(park, routes);
 
-        answer[0] = startPoint.x;
-        answer[1] = startPoint.y;
+        answer[0] = currPos.x;
+        answer[1] = currPos.y;
         return answer;
     }
     
@@ -34,7 +34,7 @@ class Solution {
                 if(park[i].charAt(j) == 'S'){
                     originX = i;
                     originY = j;
-                    startPoint = new Point(originX, originY);
+                    currPos = new Point(originX, originY);
                     
                     // check
                     // System.out.printf("originX : %d originY : %d\n", originX, originY);
@@ -57,55 +57,55 @@ class Solution {
             switch(opt) {
                 case 'N' :{
                     while(checkRange(park, routes, num) && cnt < num){
-                        startPoint.x -= 1;
+                        currPos.x -= 1;
                     }
                     
-                    if(cnt != num) startPoint.x = originX;
-                    else originX = startPoint.x;
+                    if(cnt != num) currPos.x = originX;
+                    originX = currPos.x;
                     break;
                 }
                 
                 case 'S' :{
                     while(checkRange(park, routes, num) && cnt < num){
-                        startPoint.x += 1;
+                        currPos.x += 1;
                     }
                     
-                    if(cnt != num) startPoint.x = originX;
-                    else originX = startPoint.x;
+                    if(cnt != num) currPos.x = originX;
+                    originX = currPos.x;
                     break;
                 }
                     
                 case 'W' : {
                     while(checkRange(park, routes, num) && cnt < num){
-                        startPoint.y -= 1;
+                        currPos.y -= 1;
                     }
                     
-                    if(cnt != num) startPoint.y = originY;
-                    else originY = startPoint.y;
+                    if(cnt != num) currPos.y = originY;
+                    originY = currPos.y;
                     break;
                 }
                     
                 case 'E' : {
                     while(checkRange(park, routes, num) && cnt < num){
-                        startPoint.y += 1;
+                        currPos.y += 1;
                     }
                     
-                    if(cnt != num) startPoint.y = originY;
-                    else originY = startPoint.y;
+                    if(cnt != num) currPos.y = originY;
+                    originY = currPos.y;
                     break;
                 }
             }
             
             // check
-            // System.out.printf("> x : %d y : %d\n", startPoint.x, startPoint.y);
+            // System.out.printf("> x : %d y : %d\n", currPos.x, currPos.y);
         }
     }
     
     // 3
     public boolean checkRange(String[] park, String[] routes, int num) {
-        if(startPoint.x>=0 && startPoint.x<park.length && startPoint.y>=0 && startPoint.y<park[0].length() && park[startPoint.x].charAt(startPoint.y) != 'X'){
+        if(currPos.x>=0 && currPos.x<park.length && currPos.y>=0 && currPos.y<park[0].length() && park[currPos.x].charAt(currPos.y) != 'X'){
             // check
-            // System.out.printf("starPoint.x : %d startPoint.y: %d\n", startPoint.x, startPoint.y);
+            // System.out.printf("currPos.x : %d currPos.y: %d\n", currPos.x, currPos.y);
             cnt++;
             return true;
         } return false;
