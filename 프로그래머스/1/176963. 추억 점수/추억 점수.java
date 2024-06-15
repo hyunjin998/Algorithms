@@ -19,14 +19,11 @@ class Solution {
         for(int i=0; i<photo.length; i++){
             int sum = 0;
             for(int j=0; j<photo[i].length; j++){
-                if(hash.containsKey(photo[i][j])){
-                    int value = hash.get(photo[i][j]);
-                    sum += value;
-                }
+                if(hash.containsKey(photo[i][j]))
+                    sum += hash.get(photo[i][j]);
             }
             answer[i] = sum;
         }
-        
         return answer;
     }
 }
