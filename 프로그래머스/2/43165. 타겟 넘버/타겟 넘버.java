@@ -10,12 +10,14 @@ class Solution {
     
     
     public static void DFS(int[] numbers, int target, int i, int total){
+        // basis part
         if(i == numbers.length){
             if(total == target) answer++;
+            return;
         }
-        else{
-            DFS(numbers, target, i+1, total + numbers[i]);
-            DFS(numbers, target, i+1, total - numbers[i]);
-        }
+        
+        // inductive part
+        DFS(numbers, target, i+1, total + numbers[i]);
+        DFS(numbers, target, i+1, total - numbers[i]);
     }
 }
