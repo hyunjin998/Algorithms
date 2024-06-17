@@ -8,7 +8,7 @@ class Solution {
             if(cnt<0) return answer;
             
             char ch = s.charAt(i);
-            cnt = (ch=='(' ? cnt+1 : cnt-1);
+            cnt = (ch == '(' ? cnt+1 : cnt-1);
         } return answer = (cnt != 0 ? false : true);
     }
 }
