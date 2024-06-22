@@ -2,12 +2,10 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String[] wallpaper) {
-        int[] answer = new int[4];
-        int minX = Integer.MAX_VALUE;
-        int maxX = Integer.MIN_VALUE;
-        int minY = Integer.MAX_VALUE;
-        int maxY = Integer.MIN_VALUE;
-        int idx = 0;
+        int minX = wallpaper.length;
+        int maxX = 0;
+        int minY = wallpaper[0].length();
+        int maxY = 0;
         
         for(int i=0; i<wallpaper.length; i++){
             for(int j=0; j<wallpaper[i].length(); j++){
@@ -19,11 +17,7 @@ class Solution {
                 }
             }
         }
-        
-        answer[0] = minX;
-        answer[1] = minY;
-        answer[2] = maxX+1;
-        answer[3] = maxY+1;
+        int[] answer = {minX, minY, maxX+1, maxY+1};
         return answer;
     }
 }
