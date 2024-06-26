@@ -13,17 +13,13 @@ public class Solution {
 		int T = Integer.parseInt(sc.readLine());
 		for(int test_case=1; test_case <= T; test_case++) {
 			st = new StringTokenizer(sc.readLine());
-			double avg = 0;
+			int sum = 0;
+			
 			for(int i=0; i<10; i++) {
 				int num = Integer.parseInt(st.nextToken());
-				avg += num;
-			}
-			avg = Math.round(avg/10);
-			
-			sb.append("#").append(test_case).append(" ").append((int)avg).append("\n");
-		}
-		System.out.println(sb);
-
+				sum += num;
+			} int avg = (int)Math.round((double)sum/10);
+			sb.append("#").append(test_case).append(" ").append(avg).append("\n");
+		} System.out.println(sb);
 	}
-
 }
