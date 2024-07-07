@@ -21,6 +21,6 @@ public class Main {
             for (int j = 0; j < N; j++) {
                 if (i != j && people[i][0] < people[j][0] && people[i][1] < people[j][1]) rank++;
             } sb.append(rank).append(" ");
-        } System.out.println(sb.toString().trim());
+        } System.out.println(sb);
     }
 }
