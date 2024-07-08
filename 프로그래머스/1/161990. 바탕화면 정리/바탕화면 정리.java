@@ -16,8 +16,6 @@ class Solution {
                     maxY = Math.max(maxY, j);
                 }
             }
-        }
-        int[] answer = {minX, minY, maxX+1, maxY+1};
-        return answer;
+        } return new int[] {minX, minY, maxX+1, maxY+1};
     }
 }
