@@ -1,45 +1,37 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(sc.readLine());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
         int N = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
 
-        double[] maxDistances = new double[N];
+        long[] maxDistances = new long[N];
 
         for (int i = 0; i < N; i++) {
-            int P = Integer.parseInt(sc.readLine().trim());
-            double maxDistance = 0;
+            long maxDistance = 0;
+            int P = Integer.parseInt(br.readLine().trim());
 
-            st = new StringTokenizer(sc.readLine());
-            for (int j = 0; j < P; j++) {
-                int x = Integer.parseInt(st.nextToken().trim());
-                int y = Integer.parseInt(st.nextToken().trim());
-                maxDistance = Math.max(maxDistance, x * x + y * y);
-            } maxDistances[i] = maxDistance;
+            st = new StringTokenizer(br.readLine().trim());
+            while (P-- > 0) {
+                long x = Long.parseLong(st.nextToken().trim());
+                long y = Long.parseLong(st.nextToken().trim());
+                long distanceSquared = x * x + y * y;
+                maxDistance = Math.max(maxDistance, distanceSquared);
+            }
+
+            maxDistances[i] = maxDistance;
         }
 
-        double left = 0;
-        double right = 1e10;
+        Arrays.sort(maxDistances);
+        long result = maxDistances[K - 1];
 
-        while (right - left > 1e-6) {
-            double mid = (left + right) / 2;
-            if (isValid(mid, maxDistances, K)) right = mid;
-            else left = mid;
-        } System.out.printf("%.2f\n", right * right);
-    }
-
-    private static boolean isValid(double mid, double[] maxDistances, int K) {
-        int count = 0;
-        double radiusSquared = mid * mid;
-        for (double distance : maxDistances) {
-            if (distance <= radiusSquared) count++;
-        } return count >= K;
+        System.out.printf("%d.00\n", result);
     }
 }
