@@ -1,18 +1,28 @@
 class Solution {
+    private static final char[] vowel = {'A', 'E', 'I', 'O', 'U'};
+    private int cnt = -1;
+    private int result = 0;
+    private boolean found = false;
+
     public int solution(String word) {
-        int answer = 0;
-        int[] weights = {781, 156, 31, 6, 1};
-        char[] vowels = {'A', 'E', 'I', 'O', 'U'};
+        DFS(word, "");
+        return result;
+    }
+
+    private void DFS(String word, String curr) {
+        if (curr.length() > 5 || found) return;
+
+        cnt++;
         
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            int index = 0;
-            for (int j = 0; j < vowels.length; j++) {
-                if (vowels[j] == c) {
-                    index = j;
-                    break;
-                }
-            } answer += index * weights[i] + 1;
-        } return answer;
+        if (curr.equals(word)) {
+            result = cnt;
+            found = true;
+            return;
+        }
+        
+        for(int i=0; i<vowel.length; i++){
+            char ch = vowel[i];
+            DFS(word, curr+ch);
+        }
     }
 }
