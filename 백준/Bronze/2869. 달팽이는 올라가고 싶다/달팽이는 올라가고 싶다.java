@@ -1,24 +1,19 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int A = sc.nextInt();
-        int B = sc.nextInt();
-        int V = sc.nextInt();
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int A = Integer.parseInt(st.nextToken());
+		int B = Integer.parseInt(st.nextToken());
+		int V = Integer.parseInt(st.nextToken());
 
-        int answer = (V-A) / (A-B) + 1;
-        if((V-A) % (A-B) != 0) answer += 1;
-
-//        if(A==V) {
-//            answer = 1;
-//            return;
-//        }
-//        if((V-A) >= (A-B)) {
-//            if((V-A) % (A-B) == 0) answer = (V-A) / (A-B) + 1;
-//            else answer = (V-A) / (A-B) + 2;
-//        }  else answer = 2;
-
-        System.out.println(answer);
-    }
+		int day = ((V - A) / (A - B)) + 1;
+		if ((V - A) % (A - B) != 0)  day++;
+				
+		System.out.println(day);
+	}
 }
