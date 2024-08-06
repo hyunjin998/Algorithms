@@ -4,53 +4,54 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class Main {
+    static BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+
+    static int N;
+    static int M;
+    static int[][] P;
+    static int[][] Q;
+
     public static void main(String[] args) throws IOException {
-        BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(sc.readLine());
 
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
+        st = new StringTokenizer(sc.readLine());
 
-        int[][] P = new int[N][2];
-        int[][] Q = new int[M][2];
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
-        for (int i = 0; i < N; i++) {
+        P = new int[N][2];
+        Q = new int[M][2];
+
+        Input(P, N);
+        Input(Q, M);
+
+        Radius();
+    }
+
+    public static void Input(int[][] array, int num) throws IOException{
+        for(int i=0; i<num; i++){
             st = new StringTokenizer(sc.readLine());
-            P[i][0] = Integer.parseInt(st.nextToken());
-            P[i][1] = Integer.parseInt(st.nextToken());
+            for(int j=0; j<2; j++){
+                array[i][j] = Integer.parseInt(st.nextToken());
+            }
         }
+    }
 
-        for (int i = 0; i < M; i++) {
-            st = new StringTokenizer(sc.readLine());
-            Q[i][0] = Integer.parseInt(st.nextToken());
-            Q[i][1] = Integer.parseInt(st.nextToken());
-        }
+    public static void Radius(){
+        long squareRadius = 0;
+        long max = Integer.MIN_VALUE;
 
-        long maxDistanceSquared = 0;
-
-        for (int i = 0; i < M; i++) {
+        for(int i=0; i<M; i++){
             int qx = Q[i][0];
             int qy = Q[i][1];
-            long maxDistanceForThisQ = 0;
 
-            for (int j = 0; j < N; j++) {
+            for(int j=0; j<N; j++){
                 int px = P[j][0];
                 int py = P[j][1];
 
-                long dx = px - qx;
-                long dy = py - qy;
-                long distanceSquared = dx * dx + dy * dy;
-
-                if (distanceSquared > maxDistanceForThisQ) {
-                    maxDistanceForThisQ = distanceSquared;
-                }
+                squareRadius = (long)(qx-px) * (qx-px) + (long)(qy-py) * (qy-py);
+                max = Math.max(max, squareRadius);
             }
-
-            if (maxDistanceForThisQ > maxDistanceSquared) {
-                maxDistanceSquared = maxDistanceForThisQ;
-            }
-        }
-
-        System.out.println(maxDistanceSquared);
+        } System.out.println(max);
     }
 }
