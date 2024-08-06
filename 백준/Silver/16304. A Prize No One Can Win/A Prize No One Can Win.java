@@ -22,8 +22,8 @@ public class Main {
 
         int cnt = 1;
         for (int i = 1; i < n; i++) {
-            if (array[i] + array[i-1] <= X) cnt++;
-            else break;
+            if (array[i] + array[i-1] > X) break;
+            cnt++;
         } System.out.println(cnt);
     }
 }
