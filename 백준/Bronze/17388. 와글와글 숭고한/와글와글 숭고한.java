@@ -8,9 +8,11 @@ public class Main {
         BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(sc.readLine());
 
+        String[] univ = {"Soongsil", "Korea", "Hanyang"};
         int[] array = new int[3];
+
         int sum = 0;
-        int idx = 0;
+        String univName = "";
         int min = Integer.MAX_VALUE;
 
         for(int i=0; i<3; i++){
@@ -20,11 +22,10 @@ public class Main {
 
             if(min > num) {
                 min = num;
-                idx = i;
+                univName = univ[i];
             }
         }
 
-        String answer =  (sum < 100 ? idx == 0 ? "Soongsil" : idx == 1 ? "Korea" : "Hanyang" : "OK");
-        System.out.println(answer);
+        System.out.println(sum < 100 ? univName : "OK");
     }
 }
