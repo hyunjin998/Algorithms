@@ -16,13 +16,10 @@ public class Main {
 
         for(int i=0; idx<1001; i++){
             for(int j=0; j<i; j++){
-                if(idx > 1000) break;
                 dp[idx] = dp[idx-1] + i;
                 idx++;
+                if(idx > 1000) break;
             }
-        }
-
-        System.out.println(dp[B]-dp[A-1]);
-
+        } System.out.println(dp[B]-dp[A-1]);
     }
 }
