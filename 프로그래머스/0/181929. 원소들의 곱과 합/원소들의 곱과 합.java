@@ -1,6 +1,5 @@
 class Solution {
     public int solution(int[] num_list) {
-        int answer = 0;
         int mul = 1;
         int sum = 0;
         
@@ -9,7 +8,6 @@ class Solution {
             sum += num_list[i];
         }
         
-        answer = (mul < sum*sum ? 1 : 0);
-        return answer;
+        return mul < sum*sum ? 1 : 0;
     }
 }
