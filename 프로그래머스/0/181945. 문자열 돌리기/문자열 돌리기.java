@@ -1,13 +1,13 @@
-import java.util.Scanner;
+import java.io.*;
 
 public class Solution {
-    public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		String str = sc.next();
-		
+    public static void main(String[] args) throws IOException{
+		BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        
+		String str = sc.readLine();
 		for(char ch : str.toCharArray()) {
-			System.out.println(ch);
-		}
-
+			sb.append(ch).append('\n');
+		} System.out.println(sb);
 	}
 }
