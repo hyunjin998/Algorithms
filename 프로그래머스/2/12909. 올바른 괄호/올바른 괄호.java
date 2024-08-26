@@ -1,14 +1,21 @@
+import java.util.*;
+
 class Solution {
     boolean solution(String s) {
-        boolean answer = false;
-        if(s.length() % 2 != 0) return answer;
+        Stack<Character> stack = new Stack<>();
         
-        int cnt = 0;
+        if(s.length() % 2 != 0) return false;
+        
         for(int i=0; i<s.length(); i++){
-            if(cnt<0) return answer;
-            
             char ch = s.charAt(i);
-            cnt = (ch == '(' ? cnt+1 : cnt-1);
-        } return answer = (cnt != 0 ? false : true);
+            
+            if(ch != '(') {
+                if(i==0 && ch == ')') return false;
+                else {
+                    if(stack.isEmpty()) return false;
+                    else stack.pop();
+                }
+            } else stack.add(ch);
+        } return stack.isEmpty() ? true : false;
     }
 }
