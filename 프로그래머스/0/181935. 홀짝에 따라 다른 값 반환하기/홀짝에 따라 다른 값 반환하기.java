@@ -2,19 +2,8 @@ class Solution {
     public int solution(int n) {
         int answer = 0;
         
-        // odd
-        if(n % 2 != 0){
-            for(int i=1; i<=n; i+=2){
-                answer += i;
-            }
-        }
-        
-        // even
-        else{
-            for(int i=2; i<=n; i+=2){
-                answer += Math.pow(i, 2);
-            }
-        }
-        return answer;
+        for(int i=1; i<=n; i+=2){
+            answer += (n%2 != 0 ? i : Math.pow(i+1, 2));
+        } return answer;
     }
 }
