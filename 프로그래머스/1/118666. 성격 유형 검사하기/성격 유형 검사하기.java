@@ -14,12 +14,14 @@ class Solution {
         hash.put('A', 0);
         hash.put('N', 0);
         
-        for(int i = 0; i < choices.length; i++) {
-            char disAgree = survey[i].charAt(0);
-            char agree = survey[i].charAt(1);
+        int idx = 0;
+        for(int choice : choices) {
+            char disAgree = survey[idx].charAt(0);
+            char agree = survey[idx].charAt(1);
             
-            if(choices[i] < 4) hash.put(disAgree, hash.get(disAgree) + (4 - choices[i]));
-            else hash.put(agree, hash.get(agree) + (choices[i] - 4));
+            if(choice < 4) hash.put(disAgree, hash.get(disAgree) + (4 - choice));
+            else hash.put(agree, hash.get(agree) + (choice - 4));
+            idx++;
         }
         
         answer += (hash.get('R') >= hash.get('T') ? 'R' : 'T');
