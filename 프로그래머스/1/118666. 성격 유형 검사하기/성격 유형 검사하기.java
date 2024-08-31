@@ -4,16 +4,12 @@ class Solution {
     public String solution(String[] survey, int[] choices) {
         String answer = "";
         HashMap<Character, Integer> hash = new HashMap<>();
+        char[] keys = {'R', 'T', 'C', 'F', 'J', 'M', 'A', 'N'};
         
-        hash.put('R', 0);
-        hash.put('T', 0);
-        hash.put('C', 0);
-        hash.put('F', 0);
-        hash.put('J', 0);
-        hash.put('M', 0);
-        hash.put('A', 0);
-        hash.put('N', 0);
-        
+        for (char key : keys) {
+            hash.put(key, 0);
+        }
+
         int idx = 0;
         for(int choice : choices) {
             char disAgree = survey[idx].charAt(0);
