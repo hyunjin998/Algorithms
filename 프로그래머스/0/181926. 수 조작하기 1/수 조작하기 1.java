@@ -1,11 +1,9 @@
+import java.util.*;
+
 class Solution {
     public int solution(int n, String control) {
-        
         int answer = n;
-        
-        for(int i=0; i<control.length(); i++){
-            char ch = control.charAt(i);
-            
+        for(char ch : control.toCharArray()){
             switch(ch){
                 case 'w': answer += 1; break;
                 case 's': answer -= 1; break;
