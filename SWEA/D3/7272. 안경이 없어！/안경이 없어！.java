@@ -7,9 +7,7 @@ public class Solution{
         StringTokenizer st;
         StringBuilder sb = new StringBuilder();
         
-        // char[] no_hole = {'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         String no_hole = "CEFGHIJKLMNSTUVWXYZ";
-        // char[] one_hole = {'A', 'D', 'O', 'P', 'Q', 'R'};
         String one_hole = "ADOPQR";
         // tow_hole is only 'B'
         
@@ -32,9 +30,7 @@ public class Solution{
                     else if(preStr.charAt(i) == 'B' && postStr.charAt(i) == 'B') cnt++;
                 }
                 if(cnt == preStr.length()) answer = "SAME";
-            }
-            sb.append("#").append(test_case).append(" ").append(answer).append("\n");
-        }
-        System.out.println(sb);
+            } sb.append("#").append(test_case).append(" ").append(answer).append("\n");
+        } System.out.println(sb);
     }
 }
