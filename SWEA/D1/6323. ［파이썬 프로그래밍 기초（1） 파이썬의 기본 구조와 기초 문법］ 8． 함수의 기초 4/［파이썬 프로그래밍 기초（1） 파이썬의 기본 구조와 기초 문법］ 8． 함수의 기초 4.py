@@ -1,12 +1,11 @@
-def fibonacci(x):
-    global a
-    curr, next = 0, 1
-    for i in range (x):
-        curr, next = next, curr+next
-        a.append(curr)
-    return curr
+def Fibo(num):
+    if num <= 0: return []
+    if num == 1: return [1]
+    
+    list = [1, 1]
+    while len(list) < num:
+        list.append(list[-1] + list[-2])
+    return list[:num]
 
-a = []
 num = int(input())
-fibonacci(num)
-print(a)
+print(Fibo(num))
