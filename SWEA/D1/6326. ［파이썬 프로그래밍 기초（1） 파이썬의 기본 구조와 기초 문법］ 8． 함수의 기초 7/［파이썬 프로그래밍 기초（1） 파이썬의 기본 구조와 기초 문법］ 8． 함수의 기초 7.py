@@ -1,12 +1,9 @@
-def factorial(x):
-    global total
-    if x == 1:
-        return print("%d" % total)
+def Factorial(num, total):
+    if num == 1: return total
 
     else:
-        total *= x
-        return factorial(x-1)
+        total *= num
+        return Factorial(num-1, total)
 
-total = 1
-a = int(input())
-factorial(a)
+num = int(input())
+print(Factorial(num, 1))
