@@ -1,5 +1,6 @@
-def square(x, y):
-    print("square(%d) => %d\nsquare(%d) => %d" % (x, x**2, y, y**2))
+def squareNum(num):
+    print(f"square({num}) => {num**2}")
 
-a, b = input().split(',')
-square(int(a), int(b))
+num1, num2 = map(int, input().split(', '))
+squareNum(num1)
+squareNum(num2)
