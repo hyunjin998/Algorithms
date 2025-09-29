@@ -1,11 +1,5 @@
-def longer_than(x, y):
-    if len(x) > len(y): return print_longer_than(x)
-    elif len(x) == len(y):
-        print("길이가 같습니다.")
-    else: return print_longer_than(y)
+def LongerStr(str1, str2):
+    return str1 if len(str1) > len(str2) else str2
 
-def print_longer_than(z):
-    print(z)
-
-a, b = input().split(', ')
-longer_than(a, b)
+str1, str2 =input().split(', ')
+print(LongerStr(str1, str2))
